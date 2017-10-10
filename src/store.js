@@ -1,21 +1,19 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import axios from 'axios';
-import dealerData from './dealers.json';
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        dealerData: dealerData,
+        name: "corbin from state",
         keywords: []
     },
     mutations: {
-        addKeyword(state, keyword) {
-            state.keywords.push(keyword)
+        changeName(state) {
+            state.name = "kayla";
         },
-        removeKeyword(state, index) {
-            state.keywords.splice(index, 1)
+        updateKeywords(state, newKeywordArray) {
+            state.keywords = newKeywordArray;
         }
     }
 });

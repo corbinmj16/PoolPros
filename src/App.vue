@@ -1,30 +1,45 @@
 <template>
   <div id="app">
     <navigation></navigation>
-    <filter-area :keywords="keywords"></filter-area>
+    <filter-area></filter-area>
+    <button @click="changeName">Change it</button>
+    <h3>{{name}}</h3>
     <section class="dealers_wrap">
-      <dealer></dealer>
+      <dealer
+        v-for="(dealer, index) in dealers"
+        :key="index" 
+        :dealer="dealer.data"></dealer>
     </section>
     <footer-area></footer-area>
   </div>
 </template>
 
 <script>
+import dealerData from './dealers.json';
 import axios from 'axios';
 import Navigation from "./components/Navigation.vue";
 import FilterArea from "./components/FilterArea.vue";
 import Dealer from "./components/Dealer.vue";
 import FooterArea from "./components/FooterArea.vue";
 
-
 export default {
   name: 'app',
   components: { Navigation, FilterArea, Dealer, FooterArea },
   data () {
     return {
-      keywords: [],
+      dealers: dealerData.dealers
     }
   },
+  computed: {
+    name() {
+      return this.$store.state.name;
+    }
+  },
+  methods: {
+    changeName() {
+      this.$store.commit('changeName');
+    }
+  }
 }
 </script>
 
@@ -35,7 +50,5 @@ export default {
   @import "scss/setup";
   @import "scss/header";
   @import "scss/footer";
-  section {
-    height: 300px;
-  }
+  @import "scss/filter_area";
 </style>
