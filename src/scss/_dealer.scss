@@ -1,0 +1,54 @@
+.dealers_wrap {
+    width: calc(100% - 20px);
+    max-width: 1295px;
+    min-height: 500px;
+    margin: 0 auto;
+
+    span {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        // @include tablet {
+        //     justify-content: space-between;
+        // }
+        // @include desktop {
+        //     justify-content: space-between;
+        // }
+    }
+
+    .dealer {
+        position: relative;
+        width: 100%;
+        max-width: 415px;
+        background-color: #fff;
+        @include box-shadow;
+        @include border-radius;
+        margin-bottom: 4px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        @include tablet {
+            margin-bottom: 10px;
+        }
+        @include desktop {
+            margin-bottom: 20px;
+        }
+
+        .main {
+            padding: 20px;
+
+            h1 {
+                @include open-sans(300, 26px);
+                margin: 0;
+                border-bottom: 2px solid $gray;
+                padding-bottom: 20px;
+            }
+        }
+
+        .certifications {
+            background-color: $gray;
+            height: 100px;
+            margin-top: auto;
+        }
+    }
+}

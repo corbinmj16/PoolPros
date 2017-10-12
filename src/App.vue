@@ -1,12 +1,18 @@
 <template>
   <div id="app">
     <navigation></navigation>
-    <filter-area></filter-area>
+    <filter-area
+      :zip="dealerData.zipcode"
+      :matchCount="matchingDealers.length">
+    </filter-area>
     <section class="dealers_wrap">
+      <transition-group name="fade">
       <dealer
         v-for="(dealer, index) in matchingDealers"
         :key="index" 
-        :dealer="dealer.data"></dealer>
+        :dealer="dealer.data">
+      </dealer>
+      </transition-group>
     </section>
     <footer-area></footer-area>
   </div>
@@ -25,19 +31,19 @@ export default {
   components: { Navigation, FilterArea, Dealer, FooterArea },
   data () {
     return {
-      dealers: dealerData.dealers
+      dealerData: dealerData
     }
   },
   computed: {
     matchingDealers() {
       if ( !this.$store.state.keywords.length ) {
         // if no checkboxes are checked return all dealers
-        return this.dealers;
+        return this.dealerData.dealers;
       } else {
         // keywords from vuex store
         var storeKeywords = this.$store.state.keywords;
 
-        var newMatchingDealers = this.dealers.filter(function(dealerToCheck) {
+        var newMatchingDealers = this.dealerData.dealers.filter(function(dealerToCheck) {
           // the certifications array from the dealer
           var arrayFromDealer = dealerToCheck.data.certifications;
           // look through each dealer certification
@@ -63,4 +69,18 @@ export default {
   @import "scss/header";
   @import "scss/footer";
   @import "scss/filter_area";
+  @import "scss/dealer";
+
+  #app {
+    background-image: url('assets/images/water-image.jpg');
+    background-repeat: no-repeat;
+    background-position: 0 50px;
+    background-size: inherit;
+    -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+    @include desktop {
+      background-position: 0 140px;
+      background-size: contain;
+    }
+  }
 </style>

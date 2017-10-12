@@ -1,3 +1,17 @@
 .filter_wrapper {
-    margin-top: 50px;
+    margin-top: 130px;
+    margin-bottom: 30px;
+    background-color: $gray;
+    @include border-radius;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    .filters {
+        display: flex;
+        align-items: center;
+        flex: 1;
+    }
+    
 }
