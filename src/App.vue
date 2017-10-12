@@ -31,6 +31,7 @@ export default {
   computed: {
     matchingDealers() {
       if ( !this.$store.state.keywords.length ) {
+        // if no checkboxes are checked return all dealers
         return this.dealers;
       } else {
         // keywords from vuex store
