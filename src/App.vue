@@ -2,11 +2,9 @@
   <div id="app">
     <navigation></navigation>
     <filter-area></filter-area>
-    <button @click="changeName">Change it</button>
-    <h3>{{name}}</h3>
     <section class="dealers_wrap">
       <dealer
-        v-for="(dealer, index) in dealers"
+        v-for="(dealer, index) in matchingDealers"
         :key="index" 
         :dealer="dealer.data"></dealer>
     </section>
@@ -31,13 +29,26 @@ export default {
     }
   },
   computed: {
-    name() {
-      return this.$store.state.name;
-    }
-  },
-  methods: {
-    changeName() {
-      this.$store.commit('changeName');
+    matchingDealers() {
+      if ( !this.$store.state.keywords.length ) {
+        return this.dealers;
+      } else {
+        // keywords from vuex store
+        var storeKeywords = this.$store.state.keywords;
+
+        var newMatchingDealers = this.dealers.filter(function(dealerToCheck) {
+          // the certifications array from the dealer
+          var arrayFromDealer = dealerToCheck.data.certifications;
+          // look through each dealer certification
+          return arrayFromDealer.filter(function(cert) {
+            // check to see if individual certification is in store array
+            return storeKeywords.indexOf(cert) > -1;
+          }).length === storeKeywords.length;
+        });
+
+        // return the dealers with matching keywords/certifications
+        return newMatchingDealers;
+      } // else 
     }
   }
 }

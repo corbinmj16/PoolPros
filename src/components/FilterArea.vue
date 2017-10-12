@@ -7,7 +7,6 @@
                     <label :for="cert">{{ cert }}</label>
                 </div>
             </div>
-            <h3>{{name}} - filter</h3>
         </div>
     </section>
 </template>
@@ -22,9 +21,6 @@
             }
         },
         computed: {
-            name() {
-                return this.$store.state.name;
-            },
             newKeywords() {
                 return this.keywordsChecked;
             }
