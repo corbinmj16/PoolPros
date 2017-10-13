@@ -1,17 +1,125 @@
 .filter_wrapper {
     margin-top: 130px;
     margin-bottom: 30px;
-    background-color: $gray;
+    background-color: $bgColor;
     @include border-radius;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    padding: 15px 10px;
+    &:after {
+        content: "";
+        height: 0;
+        display: block;
+        clear: both;
+    }
+    @include tablet {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 0;
+    }
+    
+    .filter_info {
+        @include open-sans(700, 15px);
+        color: $blue;
+        float: left;
+        padding: 16px 0 0 15px;
+        @include tablet {
+            float: none;
+            padding: 0 15px;
+        }
+    }
+
+    .filter_dropdown {
+        border: 1px solid $border;
+        float: right;
+        @include tablet {
+            float: none;
+            border: 0;
+            border-left: 1px solid $border;
+            height: 55px;
+            display: flex;
+        }
+        &.active {
+            p .dropdown_arrow {
+                transform: rotate(180deg);
+            }
+        }
+        p {
+            @include open-sans(700, 15px);
+            margin: 0;
+            background-color: #fff;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            @include tablet {
+                height: auto;
+                background-color: transparent;
+            }
+
+            span {
+                padding: 0 10px;
+            }
+
+            .dropdown_arrow {
+                font-size: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 45px;
+                height: 100%;
+                background-color: $bgColor;
+                border-left: 1px solid $border;
+                &:hover {
+                    cursor: pointer;
+                }
+                @include tablet {
+                    display: none;
+                }
+            }
+        } // p
+        
+    } // filter_dropdown
 
     .filters {
-        display: flex;
-        align-items: center;
-        flex: 1;
-    }
+        clear: both;
+        border: 1px solid $border;
+        background-color: #fff;
+        padding: 20px;
+        display: none;
+        &.open {
+            display: block;
+            @include tablet {
+                display: flex;
+            }
+        }
+        @include tablet {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            background-color: transparent;
+            border: 0;
+            padding: 0;
+        }
+
+        .filter {
+            margin-bottom: 20px;
+            @include tablet {
+                margin: 0 25px 0 0;
+                &:first-child {
+                    margin-left: 25px;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            label {
+                @include open-sans(400, 15px);
+            }
+        }
+    } // filters
     
 }

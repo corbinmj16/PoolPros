@@ -3,8 +3,14 @@
         <div class="filter_info">
             {{ matchCount }} dealers in {{ zip }}
         </div>
-        <p>Filter Results</p>
-        <div class="filters">
+        <div class="filter_dropdown" :class="{active: showFilters}">
+            <p>
+                <span>Filter Results</span>
+                <i class="ss-icon dropdown_arrow" @click="toggleFilterDropdown">dropdown</i>
+            </p>
+        </div>
+        
+        <div class="filters" :class="{open: showFilters}">
             <div class="filter" v-for="(cert, index) in certifications" :key="index">
                 <input type="checkbox" :id="cert" :value="cert + ' Pro'" v-model="keywordsChecked" @change="updateCertifications(cert)" />
                 <label :for="cert">{{ cert }}</label>
@@ -20,7 +26,8 @@
         data() {
             return {
                 certifications: ['Service', 'Installation', 'Residential', 'Commercial'],
-                keywordsChecked: []
+                keywordsChecked: [],
+                showFilters: false
             }
         },
         computed: {
@@ -31,6 +38,9 @@
         methods: {
             updateCertifications(item) {
                 this.$store.commit('updateKeywords', this.keywordsChecked);
+            },
+            toggleFilterDropdown() {
+                this.showFilters = !this.showFilters;
             }
         }
     }

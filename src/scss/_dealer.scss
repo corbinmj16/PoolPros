@@ -8,12 +8,12 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        // @include tablet {
-        //     justify-content: space-between;
-        // }
-        // @include desktop {
-        //     justify-content: space-between;
-        // }
+        @include tablet {
+            justify-content: space-evenly;
+        }
+        @include xl-desktop {
+            justify-content: space-between;
+        }
     }
 
     .dealer {
@@ -40,13 +40,13 @@
             h1 {
                 @include open-sans(300, 26px);
                 margin: 0;
-                border-bottom: 2px solid $gray;
+                border-bottom: 2px solid $bgColor;
                 padding-bottom: 20px;
             }
         }
 
         .certifications {
-            background-color: $gray;
+            background-color: $bgColor;
             height: 100px;
             margin-top: auto;
         }

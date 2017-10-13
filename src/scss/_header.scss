@@ -18,12 +18,10 @@ header {
                     margin-right: 50px;
                 }
                 &.commercial {
-                    img {
+                    i {
                         position: relative;
-                        width: 12px;
-                        height: 12px;
-                        top: 3px;
-                        margin-left: 3px;
+                        top: 2px;
+                        margin-left: 2px;
                     }
                 }
                 a {
@@ -57,14 +55,17 @@ header {
     } // logo
 
     .nav_wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
         height: 55px;
         @include box-shadow;
-        padding: 0 10px;
         @include desktop {
             height: 101px;
+        }
+        
+        > .container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            height: 100%;
         }
 
         .mobile_area {
@@ -82,6 +83,9 @@ header {
                 height: 62px;
                 position: relative;
                 top: 7px;
+                &:hover {
+                    cursor: pointer;
+                }
                 @include desktop {
                     display: none;
                 }
@@ -103,15 +107,21 @@ header {
                 margin: 0 20px 0;
                 width: 110px;
                 height: 36px;
+                @include animation;
                 @include desktop {
                     width: 174px;
                     height: 46px;
                     margin: 0 0 0 30px;
                 }
+                &:hover {
+                    background-color: $blue;
+                    color: #fff;
+                    cursor: pointer;
+                }
                 
-                img {
-                    width: 12px;
-                    height: 16px;
+                i {
+                    position: relative;
+                    top: 3px;
                     margin-right: 5px;
                 }
             } // find_a_pro

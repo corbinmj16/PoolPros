@@ -16,7 +16,7 @@ $blue: #216ddf;
 $darkBlue: #083d8c;
 $bgColor: #f6f6f6;
 $accentColor: #0bc9c8;
-$gray: #f6f6f6;
+$border: #ededed;
 
 /*******************
 General Mixins
@@ -34,6 +34,13 @@ General Mixins
     -moz-transition: color 0.3s linear, opacity 0.3s linear;
       -o-transition: color 0.3s linear, opacity 0.3s linear;
          transition: color 0.3s linear, opacity 0.3s linear;
+}
+
+@mixin animation {
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+      -o-transition: all 0.3s linear;
+         transition: all 0.3s linear;
 }
 
 /*******************
