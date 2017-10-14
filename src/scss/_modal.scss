@@ -1,0 +1,121 @@
+.modal_wrapper  {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(#000, .50);
+    z-index: 999;
+    overflow-y: auto;
+
+    .modal {
+        position: absolute;
+        width: calc(100% - 20px);
+        max-width: 700px;
+        left: 0;
+        right: 0;
+        top: 85px;
+        margin: 0 auto;
+        background-color: #fff;
+
+        .modal_header {
+            background-color: $darkBlue;
+            padding: 20px;
+
+            .close, p, h2 {
+                color: #fff;
+            }
+
+            .close {
+                text-align: right;
+                &:hover, &:focus {
+                    cursor: pointer;
+                    opacity: .8;
+                }
+            }
+
+            p {
+                @include open-sans(700, 16px);
+                text-transform: uppercase;
+                margin: 0;
+            }
+
+            h2 {
+                @include open-sans(400, 32px);
+                margin: 0;
+            }
+        } // modal header
+
+        .modal_body {
+            padding: 20px;
+
+            > p {
+                margin-top: 0;
+                @include open-sans(400, 15px);
+            }
+
+            form {
+                padding: 20px;
+                background-color: $bgColor;
+
+                .form_input {
+                    position: relative;
+                    margin-bottom: 20px;
+
+                    &.phone {
+                        max-width: 250px;
+                    }
+
+                    label {
+                        @include open-sans(700, 15px);
+                        line-height: 30px;
+                    }
+
+                    input, textarea {
+                        width: 100%;
+                        border: 1px solid $border;
+                        @include open-sans(400, 15px);
+                    }
+                    input {
+                        height: 46px;
+                        text-indent: 15px;
+                    }
+                    textarea {
+                        height: 75px;
+                        text-indent: 15px;
+                        padding-top: 15px;
+                    }
+                } // form input
+
+                .form_submit {
+                    padding-top: 20px;
+                    border-top: 2px solid $border;
+
+                    button {
+                        @include open-sans(700, 14px);
+                        border: none;
+                        background: transparent;
+                        @include animation;
+                        &:hover, &:focus {
+                            color: $accentColor;
+                            cursor: pointer;
+                        }
+
+                        i {
+                            color: $accentColor;
+                        }
+                    }
+                }
+            }
+        } // modal body
+
+        .modal_footer {
+            background-color: $border;
+            padding: 10px;
+            p {
+                @include open-sans(400, 12px);
+            }
+        }
+
+    } // modal
+} // modal_wrapper

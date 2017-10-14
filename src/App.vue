@@ -1,10 +1,16 @@
 <template>
   <div id="app">
     <navigation></navigation>
+
     <filter-area
       :zip="dealerData.zipcode"
       :matchCount="matchingDealers.length">
     </filter-area>
+
+    <transition name="fade">
+      <modal v-show="toggleModal"></modal>
+    </transition>
+
     <section class="dealers_wrap">
       <transition-group name="fade">
       <dealer
@@ -14,6 +20,7 @@
       </dealer>
       </transition-group>
     </section>
+
     <footer-area></footer-area>
   </div>
 </template>
@@ -25,16 +32,20 @@ import Navigation from "./components/Navigation.vue";
 import FilterArea from "./components/FilterArea.vue";
 import Dealer from "./components/Dealer.vue";
 import FooterArea from "./components/FooterArea.vue";
+import Modal from "./components/Modal.vue";
 
 export default {
   name: 'app',
-  components: { Navigation, FilterArea, Dealer, FooterArea },
+  components: { Navigation, FilterArea, Dealer, FooterArea, Modal },
   data () {
     return {
-      dealerData: dealerData
+      dealerData: dealerData,
     }
   },
   computed: {
+    toggleModal() {
+      return this.$store.state.modalBool;
+    },
     matchingDealers() {
       if ( !this.$store.state.keywords.length ) {
         // if no checkboxes are checked return all dealers
@@ -70,6 +81,7 @@ export default {
   @import "scss/footer";
   @import "scss/filter_area";
   @import "scss/dealer";
+  @import "scss/modal";
 
   #app {
     background-image: url('assets/images/water-image.jpg');

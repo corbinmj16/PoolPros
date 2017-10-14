@@ -2,17 +2,14 @@
     width: calc(100% - 20px);
     max-width: 1295px;
     min-height: 500px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
 
     span {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         @include tablet {
-            justify-content: space-evenly;
-        }
-        @include xl-desktop {
-            justify-content: space-between;
+            justify-content: center;
         }
     }
 
@@ -23,7 +20,7 @@
         background-color: #fff;
         @include box-shadow;
         @include border-radius;
-        margin-bottom: 4px;
+        margin-bottom: 7px;
         display: flex;
         flex-direction: column;
         text-align: center;
@@ -31,24 +28,152 @@
             margin-bottom: 10px;
         }
         @include desktop {
-            margin-bottom: 20px;
+            margin-bottom: 20px;  
         }
-
-        .main {
-            padding: 20px;
-
-            h1 {
-                @include open-sans(300, 26px);
-                margin: 0;
-                border-bottom: 2px solid $bgColor;
-                padding-bottom: 20px;
+        @media screen and (min-width: 1315px) {
+            margin-right: 25px;
+            &:nth-child(3n+3), &:last-child {
+                margin-right: 0;
             }
         }
 
+        .dealer_main {
+            padding: 20px;
+
+            .dealer_name {
+                height: 95px;
+                display: flex;
+                align-items: center;
+                justify-content: center;   
+                width: 100%;
+                border-bottom: 2px solid $bgColor;
+                h1 {
+                    @include open-sans(300, 26px);
+                    margin: 0;
+                }
+            } // dealer_name
+
+            .dealer_info {
+
+                .phone {
+                    @include border-radius;
+                    background-color: $blue;
+                    color: #fff;
+                    font-size: 18px;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 8px;
+                    @include desktop {
+                        background-color: transparent;
+                        color: $textColor;
+                        font-size: 26px;
+                        padding: 0;
+                        display: flex;
+                    }
+
+                    i {
+                        background-color: $darkBlue;
+                        width: 28px;
+                        height: 28px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 4px 2px 0;
+                        @include desktop {
+                            font-size: 18px;
+                            background-color: $blue;
+                            color: #fff;
+                            border-radius: 100%;
+                            margin-right: 15px;
+                        }
+                    }
+
+                    span {
+                        @include open-sans(700, 10px);
+                        margin: 0 5px;
+                        color: #fff;
+                        @include desktop {
+                            display: none;
+                        }
+                    }
+                } // phone 
+
+                .question {
+                    @include open-sans(700, 12px);
+                    font-style: italic;
+                    margin: 20px auto;
+                } // question
+
+                .email {
+                    background: none;
+                    border: 2px solid $accentColor;
+                    color: $blue;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    @include border-radius;
+                    @include open-sans(700, 15px);
+                    height: 46px;
+                    margin: 10px auto 30px;
+                    padding: 0 15px;
+                    @include animation;
+                    &:hover, &:focus {
+                        background: $accentColor;
+                        color: #fff;
+                        cursor: pointer;
+                    }
+
+                    i {
+                        position: relative;
+                        top: 3px;
+                        margin-right: 8px;
+                    }
+                } // email
+
+                .hours {
+                    > p {
+                        @include open-sans(700, 14px);
+                        margin-bottom: 5px;
+                    }
+
+                    ul {
+                        li {
+                            @include open-sans(400, 13px);
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            } // dealer_info
+        } // dealer_main
+
         .certifications {
             background-color: $bgColor;
-            height: 100px;
+            height: 60px;
             margin-top: auto;
-        }
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+
+            ul {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                flex-wrap: wrap;
+                width: 100%;
+
+                li {
+                    @include open-sans(400, 12px);
+                    width: 50%;
+                    text-align: left;
+                    margin-bottom: 10px;
+                    i {
+                        color: #bebebe;
+                        margin-right: 7px;
+                    }
+                }
+            }
+
+        } // certifications
     }
 }

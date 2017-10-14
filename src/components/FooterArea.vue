@@ -35,8 +35,7 @@
                     <a href="/">Dealers and Distributors</a>
                 </li>
                 <li class="commercial">
-                    <a href="#">Commercial Service 
-                    <img src="../assets/images/action-commercial-icon.png" alt="Commercial Service Icon" />
+                    <a href="#">Commercial Service <i class="ss-icon">action</i>
                     </a>
                 </li>
             </ul>
