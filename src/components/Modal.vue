@@ -13,31 +13,46 @@
                 <p>Fill out the form below and {{dealerName}} will get in touch.</p>
                 <form v-on:submit.prevent>
                     <div class="form_input">
-                        <img v-bind:src="checkMarkSrc">
+                        <img v-bind:src="errors.has('name') || fields.name.invalid ? invalidSrc : validSrc">
                         <label for="name">First and last name</label><br>
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" v-model="name" v-validate="'required|min:4'">
+                        <p class="error" v-if="errors.has('name')">{{errors.first('name')}}</p>
                     </div>
                     <div class="form_input phone">
+                        <img v-bind:src="errors.has('phone') || fields.phone.invalid ? invalidSrc : validSrc">
                         <label for="phone">Phone number</label><br>
-                        <input type="tel" name="phone" id="phone">
+                        <input type="tel" name="phone" id="phone" v-model.number="phone" v-validate="'required|numeric|min:10|max:10'" />
+                        <p class="error" v-if="errors.has('phone')">{{errors.first('phone')}}</p>
                     </div>
                     <div class="form_input">
+                        <img v-bind:src="errors.has('email') || fields.email.invalid ? invalidSrc : validSrc">
                         <label for="email">Email address</label><br>
-                        <input type="email" name="email" id="email">
+                        <input type="email" v-model="email" name="email" id="email" v-validate="'required|email'">
+                        <p class="error" v-if="errors.has('email')">{{errors.first('email')}}</p>
                     </div>
                     <div class="form_input">
+                        <span class="optional">Optional</span>
                         <label for="comments">Comments or questions</label><br>
                         <textarea name="comments" id="comments"></textarea>
                     </div>
                     <div class="form_input">
-                        <label for="email">Do you currently own a pool or spa?</label><br>
-                        yes no 
+                        <span class="optional">Optional</span>
+                        <label>Do you currently own a pool or spa?</label><br>
+                        <div class="radio">
+                            <input type="radio" name="yes" value="yes" v-model="pool_spa">
+                            <label for="yes">Yes</label>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" name="no" value="no" v-model="pool_spa">
+                            <label for="no">No</label>
+                        </div>
                     </div>
                     <div class="form_submit">
-                        <button type="submit">
+                        <button type="submit" :disabled="errors.any()">
                             Send my email
                             <i class="ss-icon">next</i>
                         </button>
+                        {{errors.any()}}
                     </div>
                 </form>
             </div>
@@ -50,17 +65,24 @@
 </template>
 
 <script>
+    // import VeeValidate from 'vee-validate'
+
     export default {
         name: "Modal",
         data() {
             return {
-                checkMarkSrc: "../src/assets/images/circle-form.png"
+                name: '',
+                phone: '',
+                email: '',
+                pool_spa: '',
+                invalidSrc: "../src/assets/images/circle-form.png",
+                validSrc: "../src/assets/images/checkmark-circle.png",
             }
         },
         computed: {
             dealerName() {
                 return this.$store.state.dealerNameModal;
-            }
+            },
         },
         methods: {
             closeModal() {

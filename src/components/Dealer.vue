@@ -1,5 +1,5 @@
 <template>
-    
+
     <div class="dealer">
         <div class="dealer_main">
             <div class="dealer_name">
@@ -24,12 +24,12 @@
                     </ul>
                 </div>
             </div>
-            
+
         </div>
         <div class="certifications">
             <ul>
                 <li v-for="(cert, index) in dealer.certifications" :key="index" :class="cert | className">
-                    <i class="ss-icon">{{cert | icon}}</i>
+                    <i class="ss-icon">{{cert | certificationsIcon}}</i>
                     {{cert}}
                 </li>
             </ul>
@@ -51,7 +51,7 @@
             className(value) {
                 return value.split(" ").join("_").toLowerCase();
             },
-            icon(value) {
+            certificationsIcon(value) {
                 switch(value.toLowerCase()) {
                     case 'installation pro':
                         return 'star'
@@ -59,7 +59,7 @@
                     case 'commercial pro':
                         return 'users'
                         break;
-                    case 'residential pro': 
+                    case 'residential pro':
                         return 'home'
                         break;
                     case 'service pro':
@@ -70,7 +70,7 @@
                 }
             },
             noTime(value) {
-                return value == "" ? "- CLOSED" : value; 
+                return value == "" ? "- CLOSED" : value;
             }
         }
     }

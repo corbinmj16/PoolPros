@@ -62,6 +62,23 @@
                     position: relative;
                     margin-bottom: 20px;
 
+                    img, span {
+                        position: absolute;
+                        right: 0;
+                        top: 5px;
+                    }
+                    span, p {
+                        @include open-sans(300, 14px);
+                        font-style: italic;
+                    }
+                    p {
+                        color: red;
+                    }
+
+                    img {
+                        width: 21px;
+                    }
+
                     &.phone {
                         max-width: 250px;
                     }
@@ -71,25 +88,46 @@
                         line-height: 30px;
                     }
 
-                    input, textarea {
+                    input[type="text"],
+                    input[type="email"],
+                    input[type="tel"],
+                    textarea {
                         width: 100%;
                         border: 1px solid $border;
                         @include open-sans(400, 15px);
                     }
+
                     input {
                         height: 46px;
                         text-indent: 15px;
                     }
+
                     textarea {
                         height: 75px;
                         text-indent: 15px;
                         padding-top: 15px;
                     }
+
+                    .radio {
+                        position: relative;
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 10px;
+
+                        label {
+                            margin-left: 5px;
+                        }
+                    }
                 } // form input
+
+
 
                 .form_submit {
                     padding-top: 20px;
                     border-top: 2px solid $border;
+                    display: flex;
+                    justify-content: center;
 
                     button {
                         @include open-sans(700, 14px);
@@ -102,6 +140,8 @@
                         }
 
                         i {
+                            position: relative;
+                            top: 2px;
                             color: $accentColor;
                         }
                     }
