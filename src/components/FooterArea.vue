@@ -45,16 +45,12 @@
                 <li><a href="#">Terms and Conditions</a></li>
             </ul>
         </div>
-       
+
     </footer>
 </template>
 
 <script>
     export default {
         name: "Footer-Area",
-        data() {
-            return {
-            }
-        },
     }
 </script>

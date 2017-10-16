@@ -13727,10 +13727,7 @@ var Component = normalizeComponent(
 //
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    name: "Footer-Area",
-    data() {
-        return {};
-    }
+    name: "Footer-Area"
 });
 
 /***/ }),
@@ -13879,8 +13876,8 @@ var Component = normalizeComponent(
             email: '',
             pool_spa: '',
             comment: '',
-            invalidSrc: "../src/assets/images/circle-form.png",
-            validSrc: "../src/assets/images/checkmark-circle.png"
+            invalidSrc: "./src/assets/images/circle-form.png",
+            validSrc: "./src/assets/images/checkmark-circle.png"
         };
     },
     computed: {
