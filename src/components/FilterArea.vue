@@ -15,6 +15,9 @@
                 <input type="checkbox" :id="cert" :value="cert + ' Pro'" v-model="keywordsChecked" @change="updateCertifications(cert)" />
                 <label :for="cert">{{ cert }}</label>
             </div>
+            <div class="tool_tip" :title="toolTip">
+                <img src="/src/assets/images/tool-tip-icon-filtering.png" alt="Tool Tip">
+            </div>
         </div>
     </section>
 </template>
@@ -27,7 +30,8 @@
             return {
                 certifications: ['Service', 'Installation', 'Residential', 'Commercial'],
                 keywordsChecked: [],
-                showFilters: false
+                showFilters: false,
+                toolTip: "Filter the dealers by their certifications"
             }
         },
         computed: {

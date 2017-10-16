@@ -127,7 +127,10 @@
                     padding-top: 20px;
                     border-top: 2px solid $border;
                     display: flex;
-                    justify-content: center;
+                    justify-content: flex-end;
+                    @include desktop {
+                        justify-content: center;
+                    }
 
                     button {
                         @include open-sans(700, 14px);
@@ -138,11 +141,19 @@
                             color: $accentColor;
                             cursor: pointer;
                         }
+                        @include desktop {
+                            display: flex;
+                        }
 
                         i {
                             position: relative;
                             top: 2px;
                             color: $accentColor;
+                            display: none;
+                            @include desktop {
+                                display: flex;
+                                margin-left: 5px;
+                            }
                         }
                     }
                 }
@@ -152,6 +163,10 @@
         .modal_footer {
             background-color: $border;
             padding: 10px;
+            display: none;
+            @include desktop {
+                display: block;
+            }
             p {
                 @include open-sans(400, 12px);
             }

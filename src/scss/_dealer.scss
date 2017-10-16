@@ -27,11 +27,17 @@
         @include tablet {
             margin-bottom: 10px;
         }
-        @include desktop {
-            margin-bottom: 20px;  
+        @media screen and (min-width: 900px) {
+            margin-right: 40px;
+            &:nth-child(2n+2), &:last-child {
+                margin-right: 0;
+            }
         }
         @media screen and (min-width: 1315px) {
             margin-right: 25px;
+            &:nth-child(2n+2), &:last-child {
+                margin-right: 25px;
+            }
             &:nth-child(3n+3), &:last-child {
                 margin-right: 0;
             }

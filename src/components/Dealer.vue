@@ -9,7 +9,7 @@
                 <h2 class="phone">
                     <i class="ss-icon">phone</i>
                     <span>Tap to call</span>
-                    {{ dealer.phone1 }}
+                    {{ dealer.phone1 | phoneFormat }}
                 </h2>
                 <p class="question">Can't talk now? Click below to send an email.</p>
                 <button class="email" @click="openModal(dealer.name)">
@@ -19,7 +19,7 @@
                     <p>Business Hours</p>
                     <ul>
                         <li>Weekdays {{dealer.weekHours.mon}}</li>
-                        <li>Saturdays {{dealer.weekHours.sat}}</li>
+                        <li>Saturdays {{dealer.weekHours.sat | noTime}}</li>
                         <li>Sunday {{dealer.weekHours.sun | noTime}}</li>
                     </ul>
                 </div>
@@ -68,6 +68,9 @@
                     default:
                         return ''
                 }
+            },
+            phoneFormat(value) {
+                return value.split('-').join('.');
             },
             noTime(value) {
                 return value == "" ? "- CLOSED" : value;

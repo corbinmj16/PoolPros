@@ -121,5 +121,15 @@
             }
         }
     } // filters
+
+    .tool_tip {
+        width: 19px;
+        height: 19px;
+        position: relative;
+        top: 2px;
+        img {
+            width: 100%;
+        }
+    }
     
 }

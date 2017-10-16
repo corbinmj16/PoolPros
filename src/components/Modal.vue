@@ -11,11 +11,11 @@
 
             <div class="modal_body">
                 <p>Fill out the form below and {{dealerName}} will get in touch.</p>
-                <form v-on:submit.prevent>
+                <form @submit.prevent="validateForm">
                     <div class="form_input">
                         <img v-bind:src="errors.has('name') || fields.name.invalid ? invalidSrc : validSrc">
                         <label for="name">First and last name</label><br>
-                        <input type="text" name="name" id="name" v-model="name" v-validate="'required|min:4'">
+                        <input type="text" name="name" id="name" v-model="name" v-validate="'required|min:4|alpha'">
                         <p class="error" v-if="errors.has('name')">{{errors.first('name')}}</p>
                     </div>
                     <div class="form_input phone">
@@ -33,7 +33,7 @@
                     <div class="form_input">
                         <span class="optional">Optional</span>
                         <label for="comments">Comments or questions</label><br>
-                        <textarea name="comments" id="comments"></textarea>
+                        <textarea name="comments" id="comments" v-model="comment"></textarea>
                     </div>
                     <div class="form_input">
                         <span class="optional">Optional</span>
@@ -48,11 +48,10 @@
                         </div>
                     </div>
                     <div class="form_submit">
-                        <button type="submit" :disabled="errors.any()">
+                        <button type="submit">
                             Send my email
                             <i class="ss-icon">next</i>
                         </button>
-                        {{errors.any()}}
                     </div>
                 </form>
             </div>
@@ -65,8 +64,6 @@
 </template>
 
 <script>
-    // import VeeValidate from 'vee-validate'
-
     export default {
         name: "Modal",
         data() {
@@ -75,6 +72,7 @@
                 phone: '',
                 email: '',
                 pool_spa: '',
+                comment: '',
                 invalidSrc: "../src/assets/images/circle-form.png",
                 validSrc: "../src/assets/images/checkmark-circle.png",
             }
@@ -87,6 +85,20 @@
         methods: {
             closeModal() {
                 this.$store.commit('closeModal');
+            },
+            validateForm() {
+                this.$validator.validateAll().then((result) => {
+                    if (result) {
+                        this.$store.commit('closeModal');
+                        this.name = '';
+                        this.phone = '';
+                        this.email = '';
+                        this.pool_spa = '';
+                        this.comment = '';
+                        this.$validator.reset();
+                        return;
+                    }
+                });
             }
         }
     }
