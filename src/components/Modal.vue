@@ -73,8 +73,8 @@
                 email: '',
                 pool_spa: '',
                 comment: '',
-                invalidSrc: "../src/assets/images/circle-form.png",
-                validSrc: "../src/assets/images/checkmark-circle.png",
+                invalidSrc: "./src/assets/images/circle-form.png",
+                validSrc: "./src/assets/images/checkmark-circle.png",
             }
         },
         computed: {
