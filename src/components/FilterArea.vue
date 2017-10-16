@@ -9,14 +9,14 @@
                 <i class="ss-icon dropdown_arrow" @click="toggleFilterDropdown">dropdown</i>
             </p>
         </div>
-        
+
         <div class="filters" :class="{open: showFilters}">
             <div class="filter" v-for="(cert, index) in certifications" :key="index">
                 <input type="checkbox" :id="cert" :value="cert + ' Pro'" v-model="keywordsChecked" @change="updateCertifications(cert)" />
                 <label :for="cert">{{ cert }}</label>
             </div>
             <div class="tool_tip" :title="toolTip">
-                <img src="/src/assets/images/tool-tip-icon-filtering.png" alt="Tool Tip">
+                <img src="src/assets/images/tool-tip-icon-filtering.png" alt="Tool Tip">
             </div>
         </div>
     </section>

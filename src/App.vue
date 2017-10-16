@@ -15,7 +15,7 @@
       <transition-group name="fade">
       <dealer
         v-for="(dealer, index) in matchingDealers"
-        :key="index" 
+        :key="index"
         :dealer="dealer.data">
       </dealer>
       </transition-group>
@@ -66,7 +66,7 @@ export default {
 
         // return the dealers with matching keywords/certifications
         return newMatchingDealers;
-      } // else 
+      } // else
     }
   }
 }
@@ -89,7 +89,8 @@ export default {
     background-position: 0 50px;
     background-size: inherit;
     -webkit-font-smoothing: antialiased;
-	  -moz-osx-font-smoothing: grayscale;
+	-moz-osx-font-smoothing: grayscale;
+
     @include desktop {
       background-position: 0 140px;
       background-size: contain;
